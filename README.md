@@ -14,20 +14,32 @@
 
 TALQS (Transformer-based AI for Legal Question-answering and Summarization) is a web-based application designed to help users quickly understand lengthy legal judgments. The system extracts text from uploaded PDF documents, generates concise summaries using a pretrained transformer model, and enables users to ask natural language questions about the document.
 
-Built with Gradio and Hugging Face Transformers, TALQS demonstrates how modern NLP models can improve legal document accessibility and information retrieval.
+Built with Gradio and Hugging Face Transformers, TALQS demonstrates how modern Natural Language Processing (NLP) models can improve legal document accessibility, analysis, and information retrieval.
+
+---
+
+## 🌐 Live Demo
+
+🚀 **Try TALQS Online**
+
+**Hugging Face Space:**
+https://huggingface.co/spaces/manoj1454/TALQS
+
+No installation required. Upload a legal judgment PDF, generate summaries, and ask questions directly from your browser.
 
 ---
 
 ## ✨ Features
 
 * 📄 Upload legal judgment PDFs
-* 📝 Generate concise document summaries
-* ❓ Ask natural language questions about the judgment
+* 📝 Generate concise AI-powered summaries
+* ❓ Ask natural language questions about the uploaded document
 * 🔍 Extract answers directly from document content
-* 📚 Automatic text extraction using PDF parsing
-* ✂️ Intelligent chunking for handling long documents
-* 🌐 Simple and interactive Gradio web interface
-* 🤖 Powered by pretrained Transformer models
+* 📚 PDF text extraction using pdfplumber
+* ✂️ Automatic chunking for handling long documents
+* ⚡ Interactive Gradio web interface
+* 🤖 Powered by state-of-the-art Transformer models
+* 🌐 Available online through Hugging Face Spaces
 
 ---
 
@@ -46,7 +58,7 @@ Built with Gradio and Hugging Face Transformers, TALQS demonstrates how modern N
 
 ### NLP Models
 
-#### Summarization
+#### Document Summarization
 
 * `facebook/bart-large-cnn`
 * Transformer-based abstractive summarization model
@@ -60,31 +72,31 @@ Built with Gradio and Hugging Face Transformers, TALQS demonstrates how modern N
 
 ## ⚙️ How It Works
 
-### 1. PDF Upload
+### Step 1: Upload PDF
 
-The user uploads a legal judgment PDF through the Gradio interface.
+Users upload a legal judgment PDF through the Gradio interface.
 
-### 2. Text Extraction
+### Step 2: Text Extraction
 
-The application extracts textual content from each page using **pdfplumber**.
+Text is extracted page-by-page using **pdfplumber**.
 
-### 3. Text Chunking
+### Step 3: Document Chunking
 
-Long documents are split into manageable chunks to stay within transformer token limits.
+Large documents are divided into smaller chunks to fit within transformer model token limits.
 
-### 4. Summarization
+### Step 4: Summarization
 
-Each chunk is summarized using the pretrained **BART** model, and the summaries are combined into a final concise summary.
+Each chunk is summarized using the pretrained **BART** model. The generated summaries are then combined to produce a concise final summary.
 
-### 5. Question Answering
+### Step 5: Question Answering
 
-When a question is asked:
+When a question is submitted:
 
-* The document is divided into chunks.
-* Each chunk is searched using the pretrained **RoBERTa QA** model.
-* The answer with the highest confidence score is returned to the user.
+* The document is split into chunks.
+* Each chunk is evaluated using the pretrained **RoBERTa QA** model.
+* The answer with the highest confidence score is returned.
 
-#### Processing Pipeline
+### Processing Pipeline
 
 ```text
 PDF Upload
@@ -93,66 +105,46 @@ Text Extraction (pdfplumber)
      ↓
 Document Chunking
      ↓
- ┌───────────────┬───────────────┐
- ↓               ↓
-Summarization    Question Answering
-(BART)           (RoBERTa)
- ↓               ↓
-Summary          Answer
+ ┌──────────────────┬──────────────────┐
+ ↓                  ↓
+Summarization       Question Answering
+(BART)              (RoBERTa)
+ ↓                  ↓
+Summary             Answer
 ```
 
 ---
 
 ## 🚀 Running Locally
 
-### Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/TALQS.git
 cd TALQS
 ```
 
-### Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the Application
+### 3. Run the Application
 
 ```bash
 python app.py
 ```
 
-After launching, open the local Gradio URL displayed in the terminal.
+### 4. Open in Browser
 
----
+After launching, Gradio will provide a local URL such as:
 
-## 🌐 Live Demo
+```text
+http://127.0.0.1:7860
+```
 
-**Live Demo:** [Add Hugging Face Space Link Here]
-
----
-
-## ⚠️ Limitations
-
-* The pretrained models are not specifically fine-tuned on Indian legal case law datasets.
-* Performance may vary for highly technical or domain-specific legal terminology.
-* Very long documents may lose some contextual information during chunking.
-* Extractive QA returns answers found in the document and does not perform legal reasoning.
-* This is currently a demonstration and portfolio-stage project.
-
----
-
-## 🔮 Future Improvements
-
-* Fine-tune models on Indian legal judgment datasets
-* Improve chunking and summary coherence for lengthy documents
-* Add source citations and highlighted evidence for answers
-* Support multilingual legal documents
-* Integrate Retrieval-Augmented Generation (RAG)
-* Add document search and semantic retrieval capabilities
-* Deploy optimized inference for faster response times
+Open the URL in your browser to start using TALQS.
 
 ---
 
@@ -173,11 +165,41 @@ TALQS/
 ## 🎯 Use Cases
 
 * Legal research assistance
-* Quick judgment review
+* Rapid judgment review
 * Academic legal studies
 * Case law exploration
 * Legal document summarization
 * Information extraction from court judgments
+* Educational demonstrations of NLP in the legal domain
+
+---
+
+## ⚠️ Limitations
+
+* The pretrained models are not specifically fine-tuned on Indian legal case law datasets.
+* Performance may vary on highly technical or domain-specific legal documents.
+* Very long judgments may experience some loss of context due to chunking.
+* The QA model performs extractive question answering and does not provide legal reasoning or interpretation.
+* TALQS is currently a demonstration and portfolio-stage project.
+
+---
+
+## 🔮 Future Improvements
+
+* Fine-tune transformer models on Indian legal case law datasets
+* Improve chunking and summary coherence for lengthy judgments
+* Add source citations and evidence highlighting for answers
+* Support multilingual legal documents
+* Integrate Retrieval-Augmented Generation (RAG)
+* Add semantic search capabilities
+* Improve response speed with optimized inference pipelines
+* Deploy specialized legal-domain language models
+
+---
+
+## 🎓 Academic Context
+
+TALQS was developed as a project exploring the application of Transformer-based Natural Language Processing techniques in the legal domain. The project combines document summarization and question answering to improve accessibility and understanding of lengthy legal judgments.
 
 ---
 
@@ -185,7 +207,15 @@ TALQS/
 
 **Manoj**
 Computer Science Student
-Transformer-based Legal AI Project
+Neil Gogte Institute of Technology
+
+Project Focus:
+
+* Natural Language Processing (NLP)
+* Transformer Models
+* Legal AI Applications
+* Information Retrieval
+* Question Answering Systems
 
 ---
 
@@ -193,4 +223,8 @@ Transformer-based Legal AI Project
 
 This project is licensed under the **MIT License**.
 
-Feel free to use, modify, and distribute this project in accordance with the license terms.
+You are free to use, modify, and distribute this software in accordance with the terms of the license.
+
+---
+
+### ⭐ If you found this project useful, consider giving it a star on GitHub and sharing feedback to help improve future versions of TALQS.
